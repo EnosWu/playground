@@ -4,14 +4,13 @@ name: test action
 on:
   workflow_dispatch:
     inputs:
-      owner-name:
+      owner:
         description: 'for testing'
         required: true
         type: string
 
 jobs:
   setup:
-    if: inputs.owner-name
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
