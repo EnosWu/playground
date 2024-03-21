@@ -21,5 +21,8 @@ jobs:
           node-version: 18
           cache: npm
 
+      - name: Run 'npm clean-install'
+        run: npm ci
+
       - name: testing
         run: node testAction.js
