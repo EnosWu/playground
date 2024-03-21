@@ -1,0 +1,27 @@
+# test action
+name: test action
+
+on:
+  workflow_call:
+    inputs:
+      owner-name:
+        description: 'for testing'
+        required: true
+        type: string
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+
+jobs:
+  deploy-ios:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: testing
+        run: code testAction.js
