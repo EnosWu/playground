@@ -8,9 +8,6 @@ on:
         description: 'for testing'
         required: true
         type: string
-      environment:
-        description: 'Environment to run tests against'
-        type: environment
 
 jobs:
   setup:
