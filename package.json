@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "for testing anything",
   "main": "testAction.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
