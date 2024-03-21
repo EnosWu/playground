@@ -1,0 +1,11 @@
+name: 'Test Action'
+description: 'Just testing'
+author: 'Enos Wu'
+inputs:
+  owner:
+    description: 'repo owner'
+    required: true
+
+runs:
+  using: 'node18'
+  main: 'testAction.js'
