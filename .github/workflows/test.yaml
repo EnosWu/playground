@@ -27,6 +27,6 @@ jobs:
         run: npm ci
 
       - name: testing
-        uses: ./testAction.js
+        uses: ./
         with:
           owner: ${{ inputs.owner }}
