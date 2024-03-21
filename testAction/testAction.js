@@ -25,6 +25,9 @@ export async function getGitTagList () {
   // execute failed will be non-zero value
   const result = await exec.exec('git tag', null, options)
 
+  core.warning('result', result)
+  core.warning('list', list)
+
   if (result !== 0) {
     list = null
   }
