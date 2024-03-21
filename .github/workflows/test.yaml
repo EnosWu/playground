@@ -28,3 +28,5 @@ jobs:
 
       - name: testing
         run: node testAction.js
+        with:
+          owner: ${{ inputs.owner }}
