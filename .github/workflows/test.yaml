@@ -24,9 +24,11 @@ jobs:
           cache: npm
 
       - name: Run 'npm clean-install'
-        run: npm ci
+        run: |
+          cd testAction
+          npm ci
 
       - name: testing
-        uses: ./
+        uses: ./testAction/
         with:
           owner: Not input
