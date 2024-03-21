@@ -29,4 +29,4 @@ jobs:
       - name: testing
         uses: ./
         with:
-          owner: ${{ inputs.owner }}
+          owner: Not input
