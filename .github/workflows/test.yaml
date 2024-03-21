@@ -2,7 +2,7 @@
 name: test action
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       owner-name:
         description: 'for testing'
@@ -22,4 +22,4 @@ jobs:
           cache: npm
 
       - name: testing
-        run: code testAction.js
+        run: node testAction.js
