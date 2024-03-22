@@ -41,8 +41,28 @@ async function mainProcess () {
   // obtain data first
   // NOTE: Will throw if get data failed and required true.
   const ownerName = core.getInput('owner', {required: true})
+  const token = core.getInput('token', {required: true})
 
   core.debug(`enos owner name ${ownerName}`)
+
+  // login SDK
+  const octokit = github.getOctokit(ghToken)
+
+  const response = await octokit.request('GET /repos/{owner}/{repo}/issues', {
+    owner: ownerName,
+    repo: 'playground',
+    state: 'all',
+    headers: {
+      'X-GitHub-Api-Version': '2022-11-28'
+    }
+  })
+
+  const issueList = response?.data
+
+  core.debug(`Response: ${response}`)
+  core.debug(`Issue list: ${issueList}`)
+
+  console.log(`Issue list: ${issueList}`)
 
   const list = await getGitTagList()
   if (list) {
