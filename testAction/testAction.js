@@ -64,13 +64,6 @@ async function mainProcess () {
 
   console.log(`Issue list: ${issueList}`)
 
-  if (issueOptions) {
-    // add repo, owner and issueNumber to object
-    issueOptions.owner = ownerName
-    issueOptions.repo = issueRepoName
-    issueOptions.issue_number = issueNumber
-  }
-
   const issueOptions = {
     owner: ownerName,
     repo: 'playground',
