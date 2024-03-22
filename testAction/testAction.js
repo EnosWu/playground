@@ -41,7 +41,7 @@ async function mainProcess () {
   // obtain data first
   // NOTE: Will throw if get data failed and required true.
   const ownerName = core.getInput('owner', {required: true})
-  const token = core.getInput('token', {required: true})
+  const ghToken = core.getInput('token', {required: true})
 
   core.debug(`enos owner name ${ownerName}`)
 
