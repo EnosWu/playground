@@ -5,6 +5,9 @@ inputs:
   owner:
     description: 'repo owner'
     required: true
+  token:
+    description: 'access token'
+    required: true
 
 runs:
   using: 'node20'
