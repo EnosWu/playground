@@ -48,7 +48,7 @@ async function mainProcess () {
   // login SDK
   const octokit = github.getOctokit(ghToken)
 
-  const response = await octokit.request('GET /repos/{owner}/{repo}/issues', {
+  let response = await octokit.request('GET /repos/{owner}/{repo}/issues', {
     owner: ownerName,
     repo: 'playground',
     state: 'all',
@@ -63,6 +63,25 @@ async function mainProcess () {
   core.debug(`Issue list: ${issueList}`)
 
   console.log(`Issue list: ${issueList}`)
+
+  if (issueOptions) {
+    // add repo, owner and issueNumber to object
+    issueOptions.owner = ownerName
+    issueOptions.repo = issueRepoName
+    issueOptions.issue_number = issueNumber
+  }
+
+  const issueOptions = {
+    owner: ownerName,
+    repo: 'playground',
+    issue_number: 3,
+    issueBody: 'test'
+  }
+
+  response = await octokit.request('PATCH /repos/{owner}/{repo}/issues/{issue_number}',
+    issueOptions)
+
+  core.debug(`Response: ${response}`)
 
   const list = await getGitTagList()
   if (list) {
