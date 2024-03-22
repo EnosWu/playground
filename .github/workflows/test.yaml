@@ -39,5 +39,5 @@ jobs:
       - name: testing
         uses: ./testAction/
         with:
-          owner: Not input
+          owner: ${{ inputs.owner }}
           token: ${{ steps.generate-token.outputs.token }}
