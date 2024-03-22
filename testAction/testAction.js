@@ -68,7 +68,7 @@ async function mainProcess () {
     owner: ownerName,
     repo: 'playground',
     issue_number: 3,
-    issueBody: 'test'
+    body: 'test'
   }
 
   response = await octokit.request('PATCH /repos/{owner}/{repo}/issues/{issue_number}',
