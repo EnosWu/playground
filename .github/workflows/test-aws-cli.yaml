@@ -1,0 +1,44 @@
+
+name: Test aws cli
+
+on:
+  workflow_dispatch:
+    inputs:
+      aws_access_key_id:
+        description: 'AWS_ACCESS_KEY_ID'
+        required: true
+        type: string
+      aws_secret_access_key:
+        description: 'AWS_SECRET_ACCESS_KEY'
+        required: true
+        type: string
+      aws_session_token:
+        description: 'AWS_SESSION_TOKEN'
+        required: true
+        type: string
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print 'inputs'
+        env:
+          INPUTS_JSON: ${{ toJSON(inputs) }}
+        run: |
+          echo '# Deployment' >> $GITHUB_STEP_SUMMARY
+          echo '' >> $GITHUB_STEP_SUMMARY
+          echo '## Inputs' >> $GITHUB_STEP_SUMMARY
+          echo '' >> $GITHUB_STEP_SUMMARY
+          echo '```json' >> $GITHUB_STEP_SUMMARY
+          echo $INPUTS_JSON >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+      - name: Proceed deploy
+        id: proceed-deploy
+        run: |
+          aws sts get-caller-identity
+        env:
+          AWS_ACCESS_KEY_ID: ${{ inputs.aws_access_key_id }}
+          AWS_SECRET_ACCESS_KEY: ${{ inputs.aws_secret_access_key }}
+          AWS_SESSION_TOKEN: ${{ inputs.aws_session_token }}
+          AWS_DEFAULT_REGION: 'us-west-2'
